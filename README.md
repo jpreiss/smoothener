@@ -1,7 +1,7 @@
 # smoothener
 Convert multi-robot waypoint sequences into smooth piecewise polynomial trajectories.
 
-This repository contains an implementation of the continuous trajectory optimization stage
+This repository contains a Matlab implementation of the continuous trajectory optimization stage
 of the algorithm described in:
 
 > *Downwash-Aware Trajectory Planning for Large Quadcopter Teams*
@@ -67,12 +67,17 @@ item | description
    
 ## project status
 
-### major TODOs:
+### short-horizon TODOs:
 - Support 2D problems. Most "difficult" parts of the code are dimension-generic, but some places assume 3D,
   particularly the CVXGEN generated code for separating hyperplane problems.
   In the meantime, use a discrete plan with all zeroes for the z-axis,
   and set the z bounding box to something like +/- 0.001.
+- Fix the hard-coded ellipsoid dimensions in `octomap_corridor.cpp`.
+- Write more unit tests.
 
+### long-horizon TODOs:
+- Port to Python, Julia, ... (**outside contributors welcomed!**)
+- Port to C++
 
 ## implementation notes
 
