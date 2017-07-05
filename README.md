@@ -94,6 +94,9 @@ Multiple CPU cores up to the number of robots will show a large benefit.
 
 ## acknowledgements
 
+This project is developed under the supervision of [Gaurav S. Sukhatme](http://www-robotics.usc.edu/~gaurav/)
+as a part of the [Robotic Embedded Systems Lab (RESL)](http://robotics.usc.edu/resl/).
+
 This work originated as a project in [Nora Ayanian](http://www-bcf.usc.edu/~ayanian/)'s course *Coordinated Mobile Robotics* at USC in Fall 2016.
 
 Ongoing development has been a collaboration with [Wolfgang Hönig](https://github.com/whoenig) who provided the discrete graph planning front end and contributed to debugging and experiments.
