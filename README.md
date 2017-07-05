@@ -68,8 +68,10 @@ item | description
 ## project status
 
 ### major TODOs:
-- Support 2D problems (most "difficult" parts of the code are dimension-generic, but some places assume 3D,
-  particularly the CVXGEN generated code for separating hyperplane problems.)
+- Support 2D problems. Most "difficult" parts of the code are dimension-generic, but some places assume 3D,
+  particularly the CVXGEN generated code for separating hyperplane problems.
+  In the meantime, use a discrete plan with all zeroes for the z-axis,
+  and set the z bounding box to something like +/- 0.001.
 
 
 ## implementation notes
@@ -89,3 +91,13 @@ it will be used to solve these QPs.
 Wherever possible, computational bottlenecks are parallelized.
 Multiple CPU cores up to the number of robots will show a large benefit.
 
+
+## acknowledgements
+
+This work originated as a project in [Nora Ayanian](http://www-bcf.usc.edu/~ayanian/)'s course *Coordinated Mobile Robotics* at USC in Fall 2016.
+
+Ongoing development has been a collaboration with [Wolfgang Hönig](https://github.com/whoenig) who provided the discrete graph planning front end and contributed to debugging and experiments.
+
+The method builds upon [Sarah Tang](http://www.seas.upenn.edu/~sytang/)'s IROS 2016 [paper](http://www.seas.upenn.edu/~sytang/docs/2016IROS.pdf).
+
+The project name is from [Anna Lukina](http://logic-cs.at/phd/students/anna-lukina/).
