@@ -72,6 +72,7 @@ item | description
   particularly the CVXGEN generated code for separating hyperplane problems.
   In the meantime, use a discrete plan with all zeroes for the z-axis,
   and set the z bounding box to something like +/- 0.001.
+- Support varying time allocation to each step in the discrete plan (each step is same duration for all robots, but not all steps in sequence need to be same duration)
 - Fix the hard-coded ellipsoid dimensions in `octomap_corridor.cpp`.
 - Write more unit tests.
 
