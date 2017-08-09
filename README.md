@@ -36,7 +36,7 @@ Output is given as Matlab's [ppform](https://www.mathworks.com/help/curvefit/the
 
 ### extra setup to use Octomap:
 4. run `git submodule init && git submodule update`.
-5. `cd` into `octomap_corridor/octomap` and follow the "to only compile the library" instructions in Octomap's `README.md`.
+5. `cd` into `octomap_corridor/octomap` and follow the "to only compile the library" instructions in [Octomap's `README.md`](https://github.com/OctoMap/octomap).
 6. `cd` back into the `smoothener` root directory and run `make octomap`.
 7. From the `smoothener` root directory , open a Matlab session and run `main_octomap`.
    Computation should take several seconds, and you should see a 3D plot when it is done.
