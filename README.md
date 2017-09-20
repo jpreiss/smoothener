@@ -1,7 +1,7 @@
 # smoothener
 Convert multi-robot waypoint sequences into smooth piecewise polynomial trajectories.
 
-This repository contains an implementation of the continuous trajectory optimization stage
+This repository contains a Matlab implementation of the continuous trajectory optimization stage
 of the algorithm described in:
 
 > *Downwash-Aware Trajectory Planning for Large Quadcopter Teams*
@@ -36,7 +36,7 @@ Output is given as Matlab's [ppform](https://www.mathworks.com/help/curvefit/the
 
 ### extra setup to use Octomap:
 4. run `git submodule init && git submodule update`.
-5. `cd` into `octomap_corridor/octomap` and follow the "to only compile the library" instructions in Octomap's `README.md`.
+5. `cd` into `octomap_corridor/octomap` and follow the "to only compile the library" instructions in [Octomap's `README.md`](https://github.com/OctoMap/octomap).
 6. `cd` back into the `smoothener` root directory and run `make octomap`.
 7. From the `smoothener` root directory , open a Matlab session and run `main_octomap`.
    Computation should take several seconds, and you should see a 3D plot when it is done.
@@ -67,10 +67,18 @@ item | description
    
 ## project status
 
-### major TODOs:
-- Support 2D problems (most "difficult" parts of the code are dimension-generic, but some places assume 3D,
-  particularly the CVXGEN generated code for separating hyperplane problems.)
+### short-horizon TODOs:
+- Support 2D problems. Most "difficult" parts of the code are dimension-generic, but some places assume 3D,
+  particularly the CVXGEN generated code for separating hyperplane problems.
+  In the meantime, use a discrete plan with all zeroes for the z-axis,
+  and set the z bounding box to something like +/- 0.001.
+- Support varying time allocation to each step in the discrete plan (each step is same duration for all robots, but not all steps in sequence need to be same duration)
+- Fix the hard-coded ellipsoid dimensions in `octomap_corridor.cpp`.
+- Write more unit tests.
 
+### long-horizon TODOs:
+- Port to Python, Julia, ... (**outside contributors welcomed!**)
+- Port to C++
 
 ## implementation notes
 
@@ -89,3 +97,16 @@ it will be used to solve these QPs.
 Wherever possible, computational bottlenecks are parallelized.
 Multiple CPU cores up to the number of robots will show a large benefit.
 
+
+## acknowledgements
+
+This project is developed under the supervision of [Gaurav S. Sukhatme](http://www-robotics.usc.edu/~gaurav/)
+as a part of the [Robotic Embedded Systems Lab (RESL)](http://robotics.usc.edu/resl/).
+
+This work originated as a project in [Nora Ayanian](http://www-bcf.usc.edu/~ayanian/)'s course *Coordinated Mobile Robotics* at USC in Fall 2016.
+
+Ongoing development has been a collaboration with [Wolfgang Hönig](https://github.com/whoenig) who provided the discrete graph planning front end and contributed to debugging and experiments.
+
+The method builds upon [Sarah Tang](http://www.seas.upenn.edu/~sytang/)'s IROS 2016 [paper](http://www.seas.upenn.edu/~sytang/docs/2016IROS.pdf).
+
+The project name is from [Anna Lukina](http://logic-cs.at/phd/students/anna-lukina/).
