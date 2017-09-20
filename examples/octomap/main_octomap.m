@@ -42,7 +42,8 @@ iters = 2;
 pp_obs_sep_fun = @(pps, obs_ellipsoid) pp_obs_sep_octomap(pps, obs_ellipsoid, octree_file);
 
 % main routine
-[pps, costs, corridors] = smoothener(s, bbox, deg, cont, TIMESCALE, ellipsoid, obs_ellipsoid, iters, pp_obs_sep_fun);
+[pps, costs, corridors] = smoothener(s, bbox, deg, cont, TIMESCALE, ellipsoid, obs_ellipsoid, iters, ...
+	pp_obs_sep_fun, @corridor_trajectory_optimize);
 
 % Plot the results.
 % -----------------

@@ -35,8 +35,8 @@ bbox = SCALE * [[-0.5 -0.5 -0.5]', dims(:) - 0.5];
 analyze_schedule(s);
 
 % optional: clip the number of robots so it runs faster
-%N = 5;
-s = s(:,:,1:N);
+%N = 2;
+%s = s(:,:,[1 20]);
 
 % add extra stationary steps at begin and end for smooth acceleration
 s = cat(2, s(:,1,:), s(:,1,:), s, s(:,end,:));
@@ -54,13 +54,14 @@ ellipsoid = [0.12 0.12 0.3];
 obs_ellipsoid = [0.15 0.15 0.15];
 
 % number of iterations of refinement
-iters = 2;
+iters = 1;
 
 % robot/obstacle separating hyperplane function
 pp_obs_sep_fun = @(pps, obs_ellipsoid) pp_obs_sep_grid(pps, obs_ellipsoid, boxes);
 
 % main routine
-[pps, costs, corridors] = smoothener(s, bbox, deg, cont, TIMESCALE, ellipsoid, obs_ellipsoid, iters, pp_obs_sep_fun);
+[pps, costs, corridors] = smoothener(s, bbox, deg, cont, TIMESCALE, ellipsoid, obs_ellipsoid, iters, ...
+	pp_obs_sep_fun, @corridor_trajectory_optimize_sequence);
 
 % Plot the results.
 % -----------------
