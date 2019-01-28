@@ -179,7 +179,7 @@ polyhedron partition(octomap::OcTree const &ot, poly_sample const &s)
 	for (int i = 1; i < SAMPLES_PER_PIECE; ++i) {
 		p3d p = pt(i);
 		bbox_min = min(bbox_min, p);
-		bbox_max = min(bbox_max, p);
+		bbox_max = max(bbox_max, p);
 	}
 	// TODO compute the pad amount intelligently
 	float const BBOX_PAD = 1.0; // meters
